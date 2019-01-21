@@ -467,6 +467,7 @@
                     that.mouseX = e.clientX;
                     that.mouseY = e.clientY;
                     that.isDrag = true;
+                    if(that.setCapture) { that.setCapture(); }
                 });
                 $(window).on('mousemove.' + this._id, function(e){
                     if(that.isDrag){
@@ -481,8 +482,9 @@
                     if(that.isDrag){
                         that.isDrag = false;
                         that.initialX = that.movingX;
-                        that.initialY = that.movingY;
+                        that.initialY = that.movingY;                        
                     }
+                    if(that.releaseCapture) { that.releaseCapture(); }
                 })
             }
         },
